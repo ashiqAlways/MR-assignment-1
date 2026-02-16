@@ -25,7 +25,7 @@
 - async/await ব্যবহার করলে asynchronous কাজ সহজভাবে করা যায় । API থেকে ডেটা আসতে সময় লাগে ।
 
 ### 5. Explain the concept of Scope in JavaScript (Global, Function, Block)?
-* Ans: *
+## Ans: 
 
 - Global Scope পুরো প্রোগ্রামে ব্যবহার করা যায় ।
 - Function Scope শুধু সেই function এর ভিতরে ব্যবহার করা যায় ।
