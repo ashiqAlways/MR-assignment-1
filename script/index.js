@@ -1,41 +1,77 @@
 const loadCategories = () => {
-    fetch("https://fakestoreapi.com/products/categories")
-        .then(res => res.json())
-        .then(category => displayCategory(category));
+  fetch("https://fakestoreapi.com/products/categories")
+    .then((res) => res.json())
+    .then((category) => displayCategory(category));
 };
 
-const removeActive = () =>{
-    const categoriesButtons = document.querySelectorAll(".category-btn");
-    // console.log(categoriesButtons);
-    categoriesButtons.forEach(btn => btn.classList.remove("active"));
-
-}
+const removeActive = () => {
+  const categoriesButtons = document.querySelectorAll(".category-btn");
+  // console.log(categoriesButtons);
+  categoriesButtons.forEach((btn) => btn.classList.remove("active"));
+};
 
 const loadCategoryProduct = (category) => {
-    const url = `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`; 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            removeActive(); 
-            const clickBtn = document.getElementById(`btn-${category}`);
-            // console.log(clickBtn);
-             clickBtn.classList.add("active");
-            displayCategoryProduct(data)
-        });
+  const url = `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      removeActive();
+      const clickBtn = document.getElementById(`btn-${category}`);
+      // console.log(clickBtn);
+      clickBtn.classList.add("active");
+      displayCategoryProduct(data);
+    });
 };
 
-const displayCategoryProduct = (products)=>{
-    const productContainer = document.getElementById("product-container");
-    productContainer.innerHTML = "";
+const loadProductDetail = async (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayProductDetail(details);
+};
 
-    products.forEach(product => {
-        // console.log(product);
-        const card = document.createElement("div");
-        card.innerHTML = `
+const displayProductDetail = (product) => {
+  console.log(product);
+  const descriptionBox = document.getElementById("description-container");
+  descriptionBox.innerHTML = `
+    <div>
+      <h2 class="text-2xl font-bold">
+        ${product.title}
+      </h2>
+
+      <p class="text-gray-600">
+        ${product.description}
+      </p>
+
+      <div class="flex justify-between items-center">
+        <p class="text-xl font-semibold text-indigo-600">
+          $${product.price}
+        </p>
+        <p class="text-yellow-500 font-medium">
+          <i class="fa-solid fa-star text-yellow-400"></i> ${product.rating.rate}
+        </p>
+      </div>
+
+      <div class="flex gap-3 pt-3 mt-5">
+        <button class="flex-1 btn btn-primary">
+          Buy Now
+        </button>
+      </div>
+      </div>
+    `;
+  document.getElementById("product_modal").showModal();
+};
+
+const displayCategoryProduct = (products) => {
+  const productContainer = document.getElementById("product-container");
+  productContainer.innerHTML = "";
+
+  products.forEach((product) => {
+    // console.log(product);
+    const card = document.createElement("div");
+    card.innerHTML = `
           <div
-        class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col cursor-pointer hover:shadow-xl transition"
-      >
-        <!-- Image -->
+        class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col cursor-pointer hover:shadow-xl transition">
         <div class="bg-gray-100 p-6 flex justify-center items-center">
           <img
             src="${product.image}"
@@ -58,16 +94,14 @@ const displayCategoryProduct = (products)=>{
               ${product.rating.rate} <span class="ml-1">(${product.rating.count})</span>
             </div>
           </div>
-
           <h3 class="font-semibold text-gray-800 text-lg truncate">
             ${product.title}
           </h3>
-
           <p class="text-xl font-bold mt-2 text-gray-900">$${product.price}</p>
 
           <!-- Buttons -->
           <div class="flex gap-3 mt-auto">
-            <button onclick="my_modal_5.showModal()" class="flex-1 border border-gray-300 rounded-lg py-2 text-gray-600 hover:bg-gray-100 transition cursor-pointer"
+            <button onclick="loadProductDetail(${product.id})" class="flex-1 border border-gray-300 rounded-lg py-2 text-gray-600 hover:bg-gray-100 transition cursor-pointer"
             >
               <i class="fa-regular fa-eye mr-2"></i>
               Details
@@ -83,37 +117,34 @@ const displayCategoryProduct = (products)=>{
         </div>
       </div>
         `;
-        productContainer.append(card);
-    });
-
-}
+    productContainer.append(card);
+  });
+};
 
 const displayCategory = (categories) => {
-    const categoryContainer = document.getElementById("category-container");
-    categoryContainer.innerHTML = "";
+  const categoryContainer = document.getElementById("category-container");
+  categoryContainer.innerHTML = "";
 
-    for (let category of categories){
-        const btnDiv = document.createElement("div");
-        const btn = document.createElement("button");
+  for (let category of categories) {
+    const btnDiv = document.createElement("div");
+    const btn = document.createElement("button");
 
-        btn.className = "btn btn-outline btn-primary rounded-3xl category-btn";
-        btn.id = `btn-${category}`;
+    btn.className = "btn btn-outline btn-primary rounded-3xl category-btn";
+    btn.id = `btn-${category}`;
 
-        btn.textContent = capitalize(category);
+    btn.textContent = capitalize(category);
 
-        btn.addEventListener("click", () =>{
-            loadCategoryProduct(category);
-        });
+    btn.addEventListener("click", () => {
+      loadCategoryProduct(category);
+    });
 
-        btnDiv.appendChild(btn);
-        categoryContainer.appendChild(btnDiv);
-    }
+    btnDiv.appendChild(btn);
+    categoryContainer.appendChild(btnDiv);
+  }
 };
-
 
 const capitalize = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };
-
 
 loadCategories();

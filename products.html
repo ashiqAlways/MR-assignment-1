@@ -57,7 +57,7 @@
               tabindex="-1"
               class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
             >
-              <li><a>Home</a></li>
+              <li><a href="index.html">Home</a></li>
               <li><a>Products</a></li>
               <li><a>About</a></li>
               <li><a>Contact</a></li>
@@ -68,7 +68,7 @@
 
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">
-            <li><a class="text-lg">Home</a></li>
+            <li><a href="index.html" class="text-lg">Home</a></li>
             <li><a class="text-lg">Products</a></li>
             <li><a class="text-lg">About</a></li>
             <li><a class="text-lg">Contact</a></li>
@@ -103,19 +103,133 @@
     <!-- modal section -->
     
 <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
- 
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+
+<dialog id="product_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
+
+    <!-- Dynamic Content Here -->
+    <div id="description-container" class="py-2 text-gray-700 space-y-4">
+
+    </div>
+
+    <!-- Close Button -->
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
         <button class="btn">Close</button>
       </form>
     </div>
+
   </div>
 </dialog>
+
+<!-- footer section -->
+    <footer class="bg-slate-900 text-gray-300 pt-16 pb-8">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <!-- logo -->
+          <div>
+            <h2 class="text-indigo-400 text-2xl font-bold mb-4">SwiftCart</h2>
+            <p class="text-gray-400 text-sm leading-6">
+              Your one-stop shop for all your fashion and lifestyle needs.
+              Quality products, fast delivery, and excellent support.
+            </p>
+          </div>
+
+          <!-- quick Links -->
+          <div>
+            <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition">Home</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition">About</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- support -->
+          <div>
+            <h3 class="text-white font-semibold mb-4">Support</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition"
+                  >Shipping</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition">Returns</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- newsletter -->
+          <div>
+            <h3 class="text-white font-semibold mb-4">
+              Subscribe to Our Newsletter
+            </h3>
+            <p class="text-gray-400 text-sm mb-4">
+              The latest news, articles, and resources, sent to your inbox
+              weekly.
+            </p>
+
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="w-full px-4 py-2 rounded-l-lg bg-slate-800 border border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+
+              <button
+                class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 text-white text-sm rounded-r-lg transition"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- h-line -->
+        <div
+          class="border-t border-slate-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400"
+        >
+          <p>© 2026 SwiftCart, Inc. All rights reserved.</p>
+          <div class="flex gap-4 mt-4 md:mt-0 text-lg">
+            <a href="#"
+              ><i class="fa-brands fa-facebook-f hover:text-indigo-400"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-twitter hover:text-indigo-400"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-instagram hover:text-indigo-400"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-linkedin-in hover:text-indigo-400"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-regular fa-envelope hover:text-indigo-400"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="script/index.js"></script>
   </body>
