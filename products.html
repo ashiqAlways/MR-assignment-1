@@ -84,17 +84,39 @@
     </header>
 
     <!-- products section -->
-     <section>
-        <h2 class="text-4xl mt-8 mb-6 font-bold text-center">Our Products</h2>
+    <section>
+      <h2 class="text-4xl mt-8 mb-6 font-bold text-center">Our Products</h2>
 
-        <div id="category-container" class="flex gap-5 flex-wrap justify-center">
-        </div>
-     </section>
+      <div
+        id="category-container"
+        class="flex gap-5 flex-wrap justify-center"
+      ></div>
+    </section>
 
-     <section id="product-container" class="bg-gray-100 p-10 max-w-6xl mx-auto my-10">
+    <!-- card section -->
+    <section
+      id="product-container"
+      class="p-5 md:p-10 max-w-6xl mx-auto my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+    >
+    </section>
 
-     </section>
+    <!-- modal section -->
+    
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+ 
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
-     <script src="script/index.js"></script>
+    <script src="script/index.js"></script>
   </body>
 </html>
