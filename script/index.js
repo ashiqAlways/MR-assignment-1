@@ -43,16 +43,16 @@ const displayProductDetail = (product) => {
   const descriptionBox = document.getElementById("description-container");
   descriptionBox.innerHTML = `
     <div>
-      <h2 class="text-2xl font-bold">
+      <h2 class="text-2xl font-bold mb-3">
         ${product.title}
       </h2>
 
-      <p class="text-gray-600">
+      <p class="text-gray-600 mb-8">
         ${product.description}
       </p>
 
       <div class="flex justify-between items-center">
-        <p class="text-xl font-semibold text-indigo-600">
+        <p class="text-3xl font-semibold text-indigo-600">
           $${product.price}
         </p>
         <p class="text-yellow-500 font-medium">
@@ -136,8 +136,7 @@ const displayCategory = (categories) => {
   // all products btn
   const allBtnDiv = document.createElement("div");
   const allBtn = document.createElement("button");
-  allBtn.className =
-    "btn btn-outline btn-primary rounded-3xl category-btn active";
+  allBtn.className = "btn btn-outline btn-primary rounded-3xl category-btn active";
   allBtn.id = "btn-all";
   allBtn.textContent = "All Products";
   allBtn.addEventListener("click", () => {
